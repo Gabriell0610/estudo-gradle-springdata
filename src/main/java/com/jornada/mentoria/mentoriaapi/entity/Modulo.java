@@ -1,6 +1,7 @@
 package com.jornada.mentoria.mentoriaapi.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class Modulo {
 
     @ManyToOne(fetch = FetchType.LAZY) // busca só quando o get for feito
     @JoinColumn(name = "id_mentoria", referencedColumnName = "id_mentoria")
+    @JsonIgnore
     private Mentoria mentoria;
 
 

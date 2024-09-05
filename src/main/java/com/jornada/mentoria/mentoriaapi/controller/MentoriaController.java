@@ -4,11 +4,14 @@ package com.jornada.mentoria.mentoriaapi.controller;
 import com.jornada.mentoria.mentoriaapi.dto.MentoriaDto;
 import com.jornada.mentoria.mentoriaapi.dto.MentoriaEditDto;
 import com.jornada.mentoria.mentoriaapi.dto.MentoriaGetDto;
+import com.jornada.mentoria.mentoriaapi.entity.Mentoria;
+import com.jornada.mentoria.mentoriaapi.repositories.MentoriaRepository;
 import com.jornada.mentoria.mentoriaapi.service.MentoriaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -17,6 +20,9 @@ public class MentoriaController {
 
     @Autowired
     MentoriaService mentoriaService;
+
+    @Autowired
+    MentoriaRepository mentoriaRepository;
 
     @PostMapping
     @Transactional
@@ -46,6 +52,11 @@ public class MentoriaController {
         var parseId = Integer.parseInt(id);
         mentoriaService.removerMentoria(parseId);
         return "Mentoria Removida";
+    }
+
+    @GetMapping("/findByDateInicio")
+    public List<Mentoria> findByDateInicio(LocalDate dataInicio) {
+        return mentoriaRepository.findByDataInicioLessThan(dataInicio);
     }
 
 }
