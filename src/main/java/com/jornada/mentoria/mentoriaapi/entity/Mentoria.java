@@ -1,6 +1,7 @@
 package com.jornada.mentoria.mentoriaapi.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jornada.mentoria.mentoriaapi.dto.MentoriaDto;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -46,6 +47,7 @@ public class Mentoria {
                     referencedColumnName = "id_professor"
             )
     )
+    @JsonIgnore
     private Set<Professor> professores;
 
 
