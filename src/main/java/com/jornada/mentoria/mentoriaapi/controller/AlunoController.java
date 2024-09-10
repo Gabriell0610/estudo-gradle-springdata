@@ -21,11 +21,10 @@ public class AlunoController {
 
     @Autowired
     AlunoRepository alunoRepository;
-
-
     @GetMapping
-    public List<Aluno> listar() {
-        return alunoRepository.findAll();
+    public List<Aluno> listar() throws Exception {
+        throw new Exception();
+        //return alunoRepository.findAll();
     }
 
     @GetMapping("/listarTodosAlunosPaginados")

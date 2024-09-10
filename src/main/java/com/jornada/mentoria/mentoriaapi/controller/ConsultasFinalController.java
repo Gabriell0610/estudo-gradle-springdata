@@ -17,7 +17,6 @@ public class ConsultasFinalController {
     @Autowired
     EnderecoRepository enderecoRepository;
 
-
     @GetMapping("/findByLogradouro")
     public List<Endereco> findConsultas(String logradouro) {
 

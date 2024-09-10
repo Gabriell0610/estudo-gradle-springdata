@@ -33,7 +33,7 @@ public class Mentoria {
     private Set<Aluno> alunos;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "mentoria"  )
-    private Set<Modulo> modulos; // SET NÃO REPETE ELEMENTO
+    private Set<Modulo> modulos; // SET É UMA LISTA NÃO REPETE ELEMENTO
 
     //Muitas mentorias para muitos professores
     @ManyToMany(fetch = FetchType.LAZY) //FAZ O CARREGAMENTO APENAS QUANDO O GET FOR UTILIZADO
@@ -58,4 +58,60 @@ public class Mentoria {
     }
 
     public Mentoria () {}
+
+    public Integer getIdMentoria() {
+        return idMentoria;
+    }
+
+    public void setIdMentoria(Integer idMentoria) {
+        this.idMentoria = idMentoria;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public LocalDate getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(LocalDate dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public TipoMentoria getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoMentoria tipo) {
+        this.tipo = tipo;
+    }
+
+    public Set<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(Set<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+
+    public Set<Modulo> getModulos() {
+        return modulos;
+    }
+
+    public void setModulos(Set<Modulo> modulos) {
+        this.modulos = modulos;
+    }
+
+    public Set<Professor> getProfessores() {
+        return professores;
+    }
+
+    public void setProfessores(Set<Professor> professores) {
+        this.professores = professores;
+    }
 }
