@@ -7,8 +7,13 @@ import com.jornada.mentoria.mentoriaapi.dto.MentoriaGetDto;
 import com.jornada.mentoria.mentoriaapi.entity.Mentoria;
 import com.jornada.mentoria.mentoriaapi.repositories.MentoriaRepository;
 import com.jornada.mentoria.mentoriaapi.service.MentoriaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -16,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/mentoria")
+@Validated
 public class MentoriaController {
 
     @Autowired
@@ -24,9 +30,15 @@ public class MentoriaController {
     @Autowired
     MentoriaRepository mentoriaRepository;
 
+    @Operation(summary = "Insere uma nova mentoria", description = "Método responsável por inserir novas mentorias no banco de dados")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Sucesso!"),
+            @ApiResponse(responseCode = "400", description = "Erro ao inserir dados"),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor")
+    })
     @PostMapping
     @Transactional
-    public MentoriaDto postData(@RequestBody MentoriaDto mentoriaDto) {
+    public MentoriaDto postData(@RequestBody @Valid MentoriaDto mentoriaDto) {
         return mentoriaService.postMentoria(mentoriaDto);
     }
 

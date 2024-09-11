@@ -3,6 +3,7 @@ package com.jornada.mentoria.mentoriaapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jornada.mentoria.mentoriaapi.dto.MentoriaDto;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,9 +18,12 @@ public class Mentoria {
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gerador_mentoria")
     @SequenceGenerator(name = "gerador_mentoria", sequenceName = "mentoria_seq", allocationSize = 1)
+
+    @Schema(description = "código identificador da mentoria", example = "1")
     @Column(name = "id_mentoria")
     private Integer idMentoria;
 
+    @Schema(description = "Atributo que representa o nome da mentoria", example = "Mentoria de Medicina")
     @Column(name = "nome")
     private String nome;
 
