@@ -2,14 +2,16 @@ package com.jornada.mentoria.mentoriaapi.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jornada.mentoria.mentoriaapi.dto.EnderecoDto;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-
+@AllArgsConstructor
 public class Aluno {
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gerador_aluno")
@@ -31,4 +33,11 @@ public class Aluno {
     private Endereco endereco;
 
     public Aluno() {}
+
+
+    public Aluno(String name, Endereco endereco, String telefone, Mentoria mentoria) {
+        this.dadosPessoais = new DadosPessoais(name, telefone);
+        this.endereco = endereco;
+        this.mentoria = mentoria;
+    }
 }

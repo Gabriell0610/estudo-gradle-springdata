@@ -7,9 +7,7 @@ import com.jornada.mentoria.mentoriaapi.exceptions.BusinessException;
 import com.jornada.mentoria.mentoriaapi.repositories.AlunoRepository;
 import com.jornada.mentoria.mentoriaapi.repositories.ModuloRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,11 +25,14 @@ public class ModuloController {
     }
 
     @GetMapping("/findByName")
-    public List<Modulo> findByNome(String nome) throws BusinessException {
+    public List<Modulo> findByNome(@RequestParam(name = "nome") String nome) throws BusinessException {
 
-        if(!nome.contains("Java")) {
-            throw new BusinessException("O nome deve conter Java");
+        var moduloExists = moduloRepository.findByNome(nome);
+
+        if (moduloExists.isEmpty()) {
+            throw new BusinessException("Digite o nome correto do módulo");
         }
-        return moduloRepository.findByNome(nome);
+
+        return moduloExists;
     }
 }

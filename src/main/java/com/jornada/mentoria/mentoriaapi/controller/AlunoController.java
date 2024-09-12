@@ -1,17 +1,17 @@
 package com.jornada.mentoria.mentoriaapi.controller;
 
 
+import com.jornada.mentoria.mentoriaapi.dto.AlunoDto;
 import com.jornada.mentoria.mentoriaapi.dto.PageDto;
 import com.jornada.mentoria.mentoriaapi.entity.Aluno;
 import com.jornada.mentoria.mentoriaapi.repositories.AlunoRepository;
+import com.jornada.mentoria.mentoriaapi.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,11 +20,19 @@ import java.util.List;
 public class AlunoController {
 
     @Autowired
+    AlunoService alunoService;
+
+    @Autowired
     AlunoRepository alunoRepository;
+
+    @PostMapping
+    public AlunoDto save(@RequestBody AlunoDto alunoDto) {
+        return alunoService.saveAluno(alunoDto);
+    }
+
     @GetMapping
     public List<Aluno> listar() throws Exception {
-        throw new Exception();
-        //return alunoRepository.findAll();
+        return alunoRepository.findAll();
     }
 
     @GetMapping("/listarTodosAlunosPaginados")

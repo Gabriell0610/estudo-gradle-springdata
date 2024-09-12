@@ -4,6 +4,7 @@ import com.jornada.mentoria.mentoriaapi.dto.MentoriaDto;
 import com.jornada.mentoria.mentoriaapi.dto.MentoriaEditDto;
 import com.jornada.mentoria.mentoriaapi.dto.MentoriaGetDto;
 import com.jornada.mentoria.mentoriaapi.entity.Mentoria;
+import com.jornada.mentoria.mentoriaapi.mapper.AlunoMapper;
 import com.jornada.mentoria.mentoriaapi.repositories.MentoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,9 @@ public class MentoriaService {
 
     @Autowired
     MentoriaRepository mentoriaRepository;
+
+    @Autowired
+    AlunoMapper mentoriaMapper;
 
     public List<MentoriaGetDto> getAllMentoria() {
         return mentoriaRepository.findAll().stream()
