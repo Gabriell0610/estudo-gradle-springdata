@@ -4,5 +4,5 @@ import com.jornada.mentoria.mentoriaapi.entity.TipoMentoria;
 
 import java.time.LocalDate;
 
-public record MentoriaGetDto(String nome, Integer id_mentoria, LocalDate data_inicio, TipoMentoria tipoMentoria) {
+public record MentoriaGetDto(String nome, Integer id_mentoria, LocalDate dataInicio, TipoMentoria tipoMentoria) {
 }

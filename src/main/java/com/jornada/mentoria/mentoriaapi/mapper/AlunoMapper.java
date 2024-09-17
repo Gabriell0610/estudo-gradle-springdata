@@ -8,16 +8,25 @@ import com.jornada.mentoria.mentoriaapi.entity.Aluno;
 import com.jornada.mentoria.mentoriaapi.entity.Endereco;
 import com.jornada.mentoria.mentoriaapi.entity.Mentoria;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface AlunoMapper {
 
-    Aluno convertAlunoDtoToEntity(AlunoDto dto);
-    AlunoDto convertAlunoEntityToDto(Aluno entity);
+    // Mapeia AlunoDto para Aluno
+    Aluno toEntity(AlunoDto alunoDto);
 
-    Endereco convertEnderecoDtoToEntity(EnderecoDto dto);
-    EnderecoDto convertEnderecoEntityToDto(Endereco entity);
+    // Mapeia Aluno para AlunoDto
+    AlunoDto toDto(Aluno aluno);
 
-    Mentoria convertMentoriaDtoToEntity(MentoriaDto dto);
-    MentoriaDto convertMentoriaEntityToDto(Mentoria entity);
+    // Mapear EnderecoDto para Endereco e vice-versa
+    Endereco toEntity(EnderecoDto enderecoDto);
+    EnderecoDto toDto(Endereco endereco);
+
+    // Mapear MentoriaDto para Mentoria e vice-versa
+    @Mapping(target = "tipo", source = "tipoMentoria")
+    Mentoria toEntity(MentoriaDto mentoriaDto);
+
+    @Mapping(source = "tipo", target = "tipoMentoria")
+    MentoriaDto toDto(Mentoria mentoria);
 }

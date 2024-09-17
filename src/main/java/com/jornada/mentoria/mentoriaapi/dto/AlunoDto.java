@@ -1,4 +1,4 @@
 package com.jornada.mentoria.mentoriaapi.dto;
 
-public record AlunoDto(String name, String telefone, EnderecoDto endereco, MentoriaDto mentoria) {
+public record AlunoDto(DadosPessoaisDto dadosPessoais, EnderecoDto endereco, MentoriaDto mentoria) {
 }

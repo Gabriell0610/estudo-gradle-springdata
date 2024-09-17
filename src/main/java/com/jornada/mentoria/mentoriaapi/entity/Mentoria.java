@@ -57,7 +57,7 @@ public class Mentoria {
 
     public Mentoria (MentoriaDto mentoriaDto) {
         this.nome = mentoriaDto.nome();
-        this.dataInicio = mentoriaDto.data_inicio();
+        this.dataInicio = LocalDate.now();
         this.tipo = mentoriaDto.tipoMentoria();
     }
 

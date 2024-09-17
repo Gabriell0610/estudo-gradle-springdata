@@ -5,7 +5,9 @@ import com.jornada.mentoria.mentoriaapi.dto.MentoriaEditDto;
 import com.jornada.mentoria.mentoriaapi.dto.MentoriaGetDto;
 import com.jornada.mentoria.mentoriaapi.entity.Mentoria;
 import com.jornada.mentoria.mentoriaapi.mapper.AlunoMapper;
+import com.jornada.mentoria.mentoriaapi.mapper.MentoriaMapper;
 import com.jornada.mentoria.mentoriaapi.repositories.MentoriaRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -15,25 +17,27 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+
 public class MentoriaService {
 
     @Autowired
     MentoriaRepository mentoriaRepository;
 
     @Autowired
-    AlunoMapper mentoriaMapper;
+    MentoriaMapper mentoriaMapper;
+
+
+    public MentoriaDto postMentoria(MentoriaDto mentoriaDto) {
+
+        var savedMentoria = mentoriaRepository.save(new Mentoria(mentoriaDto));
+        return new MentoriaDto(savedMentoria.getNome(), savedMentoria.getTipo());
+    }
 
     public List<MentoriaGetDto> getAllMentoria() {
         return mentoriaRepository.findAll().stream()
                 .map(data -> new MentoriaGetDto(data.getNome(), data.getIdMentoria(), data.getDataInicio(),  data.getTipo()))
                 .collect(Collectors.toList());
 
-    }
-
-    public MentoriaDto postMentoria(MentoriaDto mentoriaDto) {
-
-        var savedMentoria = mentoriaRepository.save(new Mentoria(mentoriaDto));
-        return new MentoriaDto(savedMentoria.getNome(), savedMentoria.getTipo(), savedMentoria.getDataInicio());
     }
 
     public MentoriaEditDto editMentoria(Integer id, MentoriaEditDto mentoriaEditDto) {

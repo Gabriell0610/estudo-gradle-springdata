@@ -2,7 +2,6 @@ package com.jornada.mentoria.mentoriaapi.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.jornada.mentoria.mentoriaapi.dto.EnderecoDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,8 +34,8 @@ public class Aluno {
     public Aluno() {}
 
 
-    public Aluno(String name, Endereco endereco, String telefone, Mentoria mentoria) {
-        this.dadosPessoais = new DadosPessoais(name, telefone);
+    public Aluno(DadosPessoais dadosPessoais, Endereco endereco, Mentoria mentoria) {
+        this.dadosPessoais = new DadosPessoais(dadosPessoais);
         this.endereco = endereco;
         this.mentoria = mentoria;
     }
