@@ -54,7 +54,7 @@ public class MentoriaController {
     }
 
     @GetMapping("/{id}")
-    public MentoriaGetDto getDatapPorId(@PathVariable("id") String id) {
+    public MentoriaGetDto getDataPorId(@PathVariable("id") String id) {
         var parseId = Integer.parseInt(id);
         return mentoriaService.bucarPorId(parseId);
     }

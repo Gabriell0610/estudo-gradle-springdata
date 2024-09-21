@@ -1,5 +1,6 @@
 package com.jornada.mentoria.mentoriaapi.entity;
 
+import com.jornada.mentoria.mentoriaapi.dto.EnderecoDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,11 +26,11 @@ public class Endereco {
 
     public Endereco() {}
 
-    public Endereco(String logradouro, Integer numero, String bairro, String cidade, String estado) {
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
+    public Endereco(EnderecoDto enderecoDto) {
+        this.logradouro = enderecoDto.logradouro();
+        this.numero = enderecoDto.numero();
+        this.bairro = enderecoDto.bairro();
+        this.cidade = enderecoDto.cidade();
+        this.estado = enderecoDto.estado();
     }
 }

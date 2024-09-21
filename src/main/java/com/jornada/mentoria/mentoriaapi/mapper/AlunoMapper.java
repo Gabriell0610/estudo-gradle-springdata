@@ -14,6 +14,7 @@ import org.mapstruct.Mapping;
 public interface AlunoMapper {
 
     // Mapeia AlunoDto para Aluno
+
     Aluno toEntity(AlunoDto alunoDto);
 
     // Mapeia Aluno para AlunoDto

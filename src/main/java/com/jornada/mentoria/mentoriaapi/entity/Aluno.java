@@ -35,8 +35,40 @@ public class Aluno {
 
 
     public Aluno(DadosPessoais dadosPessoais, Endereco endereco, Mentoria mentoria) {
-        this.dadosPessoais = new DadosPessoais(dadosPessoais);
+        this.dadosPessoais = dadosPessoais;
         this.endereco = endereco;
         this.mentoria = mentoria;
+    }
+
+    public Integer getIdAluno() {
+        return idAluno;
+    }
+
+    public void setIdAluno(Integer idAluno) {
+        this.idAluno = idAluno;
+    }
+
+    public DadosPessoais getDadosPessoais() {
+        return dadosPessoais;
+    }
+
+    public void setDadosPessoais(DadosPessoais dadosPessoais) {
+        this.dadosPessoais = dadosPessoais;
+    }
+
+    public Mentoria getMentoria() {
+        return mentoria;
+    }
+
+    public void setMentoria(Mentoria mentoria) {
+        this.mentoria = mentoria;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }

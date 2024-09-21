@@ -13,16 +13,20 @@ import com.jornada.mentoria.mentoriaapi.repositories.AlunoRepository;
 import com.jornada.mentoria.mentoriaapi.repositories.EnderecoRepository;
 import com.jornada.mentoria.mentoriaapi.repositories.MentoriaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
-public class AlunoService {
 
-    private final AlunoRepository alunoRepository;
-    private final EnderecoRepository enderecoRepository;
-    private final MentoriaRepository mentoriaRepository;
-    private final AlunoMapper alunoMapper;
+public class AlunoService {
+    @Autowired
+    AlunoRepository alunoRepository;
+    @Autowired
+    EnderecoRepository enderecoRepository;
+    @Autowired
+    MentoriaRepository mentoriaRepository;
+    @Autowired
+    private  AlunoMapper alunoMapper;
 
     public AlunoDto saveAluno(AlunoDto alunoDto) {
 
